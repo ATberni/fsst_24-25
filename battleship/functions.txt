@@ -1,0 +1,18 @@
+void placeBoat(int **array, int rows, int cols, int type) {
+    int x = 0, y = 0, valid = 0;
+
+    if (type == EINS) {
+        do {
+            x = rand() % rows;
+            y = rand() % cols;
+            if (array[y][x] == WATER &&
+                (y == 0 || array[y - 1][x] == WATER) &&
+                (y == rows - 1 || array[y + 1][x] == WATER) &&
+                (x == 0 || array[y][x - 1] == WATER) &&
+                (x == cols - 1 || array[y][x + 1] == WATER)) {
+                valid = 1;
+            }
+        } while (!valid);
+        array[y][x] = BOAT;
+    }
+}
